@@ -1,0 +1,3 @@
+user_id,book_id,book_title,book_author,borrower_first_name,borrower_last_name,borrower_role,borrow_date,return_date
+3,1009,War and Peace,Leo Tolstoy,Jack,Smith,student,1744913972,1744919032
+2,1001,The Great Gatsby,F. Scott Fitzgerald,John,Doe,student,1744919749,1744919769

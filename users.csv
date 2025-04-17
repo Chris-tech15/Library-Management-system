@@ -1,0 +1,4 @@
+id,first_name,last_name,age,role,faculty,username,password
+1,Sielatchom,Daryl,24,Lecturer,Technology,daryl,daryl
+2,John,Doe,19,student,Engineering,johndoe,password123
+3,Jack,Smith,17,student,Science,smith,smith
