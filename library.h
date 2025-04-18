@@ -1,4 +1,4 @@
-
+// Description: Header file for library management system
 
 #ifndef LIBRARY_H
 #define LIBRARY_H
@@ -16,5 +16,6 @@ void deleteuser();
 void borrowbook(int user_id, const char *book_id);
 void returnbook(int user_id, const char *book_id);
 void trim_spaces(char *str);
+void listborrowers();
 
 #endif

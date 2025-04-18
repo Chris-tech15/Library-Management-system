@@ -1,3 +1,5 @@
+// File: books.c
+// Description: This file contains functions to manage a library system, including adding, listing, modifying, deleting books, and borrowing/returning books.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -613,4 +615,44 @@ void returnbook(int user_id, const char *book_id) {
     rename("temp_books.csv", "books.csv");
 
     printf("Book returned successfully.\n");
+}
+
+void listborrowers() {
+    FILE *file = fopen("borrowers.csv", "r");
+    if (!file) {
+        printf("Error: Unable to open borrowers.csv\n");
+        return;
+    }
+
+    char line[512];
+    printf("\n%-10s %-10s %-25s %-20s %-15s %-15s %-10s %-12s\n", 
+        "User ID", "Book ID", "Title", "Author", 
+        "First Name", "Last Name", "Role", "Status");
+    printf("-----------------------------------------------------------------------------------------------\n");
+
+    // Skip header
+    fgets(line, sizeof(line), file);
+
+    while (fgets(line, sizeof(line), file)) {
+        char user_id[20], book_id[20], title[100], author[100];
+        char first_name[50], last_name[50], role[20];
+        char borrow_date[20], return_date[20], status[20];
+
+        sscanf(line, "%19[^,],%19[^,],%99[^,],%99[^,],%49[^,],%49[^,],%19[^,],%19[^,],%19[^\n]",
+            user_id, book_id, title, author, 
+            first_name, last_name, role, 
+            borrow_date, return_date);
+
+        if (strcmp(return_date, "0") == 0) {
+            strcpy(status, "Not Returned");
+        } else {
+            strcpy(status, "Returned");
+        }
+
+        printf("%-10s %-10s %-25s %-20s %-15s %-15s %-10s %-12s\n",
+            user_id, book_id, title, author, 
+            first_name, last_name, role, status);
+    }
+
+    fclose(file);
 }
