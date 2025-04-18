@@ -1,22 +1,80 @@
-# Library Management System
+# 📚 Library Management System
 
-This is a console-based Library Management System written in C. It allows library staff and students to manage books, users, and borrowing/returning processes efficiently. The system uses CSV files for persistent data storage.
+A console-based Library Management System written in C, supporting **Admin** and **Student** users with role-based functionality, user authentication, book borrowing/returning, and CSV-based storage.
 
-## Features
+---
 
-### General
-- User authentication with role-based access (Admin, Librarian, Student)
-- Secure login with password validation
-- Change password functionality
+## 👥 User Roles
 
-### Admin & Librarian Functions
-- Add, modify, and delete books
-- List all available books
-- Manage user accounts (add, modify, delete, list)
-- Borrow and return books
+### 👨‍🏫 Admin / Librarian
+- Full access to book and user records.
+- Can borrow and return books **on behalf of any user**.
+- Can change **their own password**.
 
-### Student Functions
-- View book list
-- View user list
-- Borrow and return books
-- Change password
+### 🎓 Student
+- Can **only borrow and return books for themselves**.
+- Can view users and available books.
+- Can change **only their own password**.
+
+---
+
+## 🧾 Features
+
+### 🔐 Authentication
+- Login with `username` and `password`.
+- Create a new user account.
+- Role-based menus based on login credentials.
+
+---
+
+### 🛠 Admin Functionalities
+
+1. ➕ Add Book  
+2. 📚 List Books  
+3. ✏️ Modify Book  
+4. ❌ Delete Book  
+5. 👥 List Users  
+6. 🧑‍💼 Modify User  
+7. 🗑️ Delete User  
+8. 📖 Borrow Book (for any user)  
+9. 📤 Return Book (for any user)  
+10. 🔒 Change Own Password  
+0. 🚪 Logout  
+
+---
+
+### 🎓 Student Functionalities
+
+1. 📚 List Books  
+2. 👥 List Users  
+3. 🔒 Change Own Password  
+4. 📖 Borrow Book (for self only)  
+5. 📤 Return Book (for self only)  
+0. 🚪 Logout  
+
+---
+
+## 📂 Data Files
+
+- `books.csv` — Book records (ID, Title, Author, Quantity, etc.)
+- `users.csv` — User information (ID, Name, Age, Role, Faculty, Username, Password)
+- `borrowers.csv` — Borrow/Return logs (User ID, Book ID, Dates)
+
+---
+
+## 💡 Highlights
+
+- Input handled safely using `fgets()` to avoid buffer overflows.
+- All user inputs trimmed for spaces and newline characters.
+- Modular code using header file `library.h`.
+- Uses enums to manage menu options clearly.
+- Allows Admin to perform tasks for other users, enforcing role boundaries.
+
+---
+
+## 📦 Compilation
+
+Compile using `gcc`:
+
+```bash
+gcc main.c books.c users.c borrow.c -o library
