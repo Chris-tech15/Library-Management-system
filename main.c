@@ -40,7 +40,8 @@ typedef enum {
     ADMIN_DELETE_USER,
     ADMIN_BORROW_BOOK,
     ADMIN_RETURN_BOOK,
-    ADMIN_CHANGE_PASSWORD
+    ADMIN_CHANGE_PASSWORD,
+    ADMIN_LIST_BORROWERS  // New option
 } AdminMenuOption;
 
 typedef enum {
@@ -154,9 +155,9 @@ int main() {
                     printf("\nMenu:\n");
                     printf("1. Add Book\n2. List Books\n3. Modify Book\n4. Delete Book\n");
                     printf("5. List Users\n6. Modify User\n7. Delete User\n8. Borrow Book\n9. Return Book\n");
-                    printf("10. Change Password\n0. Logout\n");
+                    printf("10. Change Password\n11. List Borrowers\n0. Logout\n");
 
-                    choice = get_menu_choice(ADMIN_LOGOUT, ADMIN_CHANGE_PASSWORD);
+                    choice = get_menu_choice(ADMIN_LOGOUT, ADMIN_LIST_BORROWERS);
 
                     switch ((AdminMenuOption)choice) {
                         case ADMIN_ADD_BOOK: addbook(); break;
@@ -167,7 +168,6 @@ int main() {
                         case ADMIN_MODIFY_USER: modifyuser(); break;
                         case ADMIN_DELETE_USER: deleteuser(); break;
                         case ADMIN_BORROW_BOOK: {
-                            // Admin borrow book for a user
                             char book_id[ID_MAX_LEN];
                             char input[10];
                             int target_user_id;
@@ -182,7 +182,6 @@ int main() {
                             break;
                         }
                         case ADMIN_RETURN_BOOK: {
-                            // Admin return book for a user
                             char book_id[ID_MAX_LEN];
                             char input[10];
                             int target_user_id;
@@ -197,7 +196,6 @@ int main() {
                             break;
                         }
                         case ADMIN_CHANGE_PASSWORD: {
-                            // Change password for logged-in admin
                             char new_password[256];
                             printf("Enter your new password: ");
                             fgets(new_password, sizeof(new_password), stdin);
@@ -205,6 +203,9 @@ int main() {
                             changepassword(user_id, new_password);
                             break;
                         }
+                        case ADMIN_LIST_BORROWERS:
+                            listborrowers();
+                            break;
                         case ADMIN_LOGOUT:
                             printf("Logging out.\n");
                             logged_in = 0;
@@ -222,7 +223,6 @@ int main() {
                         case STUDENT_LIST_BOOKS: listbook(); break;
                         case STUDENT_LIST_USERS: listuser(); break;
                         case STUDENT_CHANGE_PASSWORD: {
-                            // Student password change
                             char new_password[256];
                             printf("Enter your new password: ");
                             fgets(new_password, sizeof(new_password), stdin);
@@ -231,7 +231,6 @@ int main() {
                             break;
                         }
                         case STUDENT_BORROW_BOOK: {
-                            // Student borrow book
                             char book_id[ID_MAX_LEN];
                             printf("Enter book ID: ");
                             fgets(book_id, sizeof(book_id), stdin);
@@ -240,7 +239,6 @@ int main() {
                             break;
                         }
                         case STUDENT_RETURN_BOOK: {
-                            // Student return book
                             char book_id[ID_MAX_LEN];
                             printf("Enter book ID: ");
                             fgets(book_id, sizeof(book_id), stdin);
