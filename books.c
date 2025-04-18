@@ -1,3 +1,5 @@
+// File: books.c
+// Description: This file contains functions to manage a library system, including adding, listing, modifying, deleting books, and borrowing/returning books.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

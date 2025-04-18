@@ -1,4 +1,4 @@
-
+// Description: Header file for library management system
 
 #ifndef LIBRARY_H
 #define LIBRARY_H

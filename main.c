@@ -1,3 +1,4 @@
+// Description: Main file for the Library Management System
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

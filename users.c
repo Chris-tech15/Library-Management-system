@@ -1,3 +1,6 @@
+// File: users.c
+// Description: This file contains functions to manage user accounts in a library system, including creating, modifying, deleting users, and logging in.
+
 #include <stdio.h>  
 #include <stdlib.h>  
 #include <string.h>  
